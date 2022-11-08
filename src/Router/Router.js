@@ -13,10 +13,12 @@ const Router = () => {
         children: [
             {
                 path: '/',
+                loader: () => fetch ('http://localhost:5000/services'),
                 element: <Home/>
             },
             {
                 path: '/services',
+                loader: () => fetch('http://localhost:5000/allServices'),
                 element: <Services/>
             },
             {
