@@ -1,0 +1,17 @@
+@media screen and (max-width: 900px)  {
+    .slider-texts{
+        font-size: 32px;
+        color: white;
+        position: relative;
+        bottom: 200px;
+        left: 80px;
+    }
+}
+@media screen and (min-width: 901px){
+    .slider-texts{
+        position: relative;
+        color: white;
+        bottom: 350px;
+        padding-left: 100px;
+    }
+}
