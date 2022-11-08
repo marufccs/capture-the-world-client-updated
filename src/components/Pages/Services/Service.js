@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HiX } from "react-icons/hi";
 
 const Service = ({service}) => {
     const {name, img, price, description} = service;
+
+    const [model, setModel] = useState(false);
+    const [tempImgSrc, setTempImgSrc] = useState('');
+    const handleImage = img => {
+      setTempImgSrc(img);
+      setModel(true);
+    }
     return (
         <div>
              <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto mb-8">
-  <figure><img src={img} alt="" /></figure>
+             <div className={model? "model open":"model"}>
+             <img src={tempImgSrc} alt=""></img>
+      <HiX onClick={() => setModel(false)}></HiX>
+      </div>
+      <div onClick={()=> handleImage(img)}>
+  <figure><img className='cursor-pointer'  src={img} alt="" /></figure> </div>
   <div className="card-body">
     <h2 className="card-title">{name}</h2>
     <p className='font-semibold text-left'>{description.slice(0, 100)+'...'}<Link className='text-cyan-800' to="/services"><span>Read More</span></Link></p>
