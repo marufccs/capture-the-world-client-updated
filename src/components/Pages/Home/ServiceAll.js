@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import 'react-photo-view/dist/react-photo-view.css';
 import './ServiceAll.css';
 import { HiX } from "react-icons/hi";
@@ -13,6 +13,7 @@ const ServiceAll = ({service}) => {
       setTempImgSrc(img);
       setModel(true);
     }
+
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto mb-8">
           <div className={model? "model open":"model"}>
@@ -20,10 +21,10 @@ const ServiceAll = ({service}) => {
       <HiX onClick={() => setModel(false)}></HiX>
           </div>
           <div onClick={()=> handleImage(img)} >
-  <figure><img className='cursor-pointer' src={img} alt="" /></figure></div>
+  <figure><img className='cursor-pointer rounded' src={img} alt="" /></figure></div>
   <div className="card-body">
     <h2 className="card-title">{name}</h2>
-    <p className='font-semibold text-left'>{description.slice(0, 100)+'...'}<Link to={`/services/${_id}`} className='text-cyan-800'><span>Read More</span></Link></p>
+    <p className='font-semibold text-left'>{description.slice(0, 100)+'...'}<Link to={'/services'} className='text-cyan-800'><span>Read More</span></Link></p>
     <div className="card-actions justify-between">
         <h4 className='text-3xl font-semibold'>Price: €{price}</h4>
       <button className="btn bg-cyan-800">Get It Now</button>

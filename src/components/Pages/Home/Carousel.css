@@ -4,7 +4,7 @@
         color: white;
         position: relative;
         bottom: 200px;
-        left: 80px;
+        padding-left: 80px;
     }
 }
 @media screen and (min-width: 901px){

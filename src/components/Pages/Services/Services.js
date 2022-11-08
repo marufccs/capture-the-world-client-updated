@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 import Service from './Service';
-import ServiceDetails from './ServiceDetails';
 
 const Services = () => {
     const services = useLoaderData();

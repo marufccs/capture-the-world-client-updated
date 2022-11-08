@@ -19,6 +19,9 @@ const Header = () => {
       <li>
         <Link to='/blog'>Blog</Link>
       </li>
+      <li>
+        <Link to='/sigin'>Sign In</Link>
+      </li>
       </ul>
     </div>
     <Link to='/' className="btn btn-ghost normal-case text-cyan-800 text-xl">Capture The World</Link>
@@ -33,6 +36,9 @@ const Header = () => {
       </li>
       <li>
         <Link to='/blog'>Blog</Link>
+      </li>
+      <li>
+        <Link to='/signin'>Sign In</Link>
       </li>
     </ul>
   </div>
