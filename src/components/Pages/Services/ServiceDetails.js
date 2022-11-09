@@ -1,12 +1,24 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Navigate, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../UserContext/UserContext';
+import Review from './Review';
 
 const ServiceDetails = () => {
-  
+
+
   const data =  useLoaderData();
-  const {name, img, description, price} = data;
+  const {_id, name, img, description, price} = data;
+  const serviceId = _id;
+
+  const [reviews, setReviews] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/reviews?serviceId=${serviceId}`)
+    .then(res => res.json())
+    .then(data => setReviews(data))
+  },[serviceId])
 
     const location = useLocation();
 
@@ -15,6 +27,39 @@ const ServiceDetails = () => {
     if(loading){
       return <button className="btn loading">loading</button>
     }
+
+    const handleReviews = event => {
+      event.preventDefault();
+      const form = event.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const img = form.image.value;
+      const review = form.review.value;
+      const wholeReview = {name, email, img, review, serviceId};
+      console.log(wholeReview);
+      fetch('http://localhost:5000/reviews', {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(wholeReview)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.acknowledged){
+          Swal.fire(
+            'Good Job!',
+            "Your review has been added successfully!",
+            'success'
+          )
+        }
+        form.reset();
+      })
+      
+      
+    }
+
 
     return (
         <div>
@@ -31,17 +76,22 @@ const ServiceDetails = () => {
               </div>
             </div>
           </div>
+          <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
+           {
+            reviews.map(rev => <Review key={rev._id} rev={rev}></Review>)
+           }
+          </div>
           <div>
             <h2 className='text-5xl font-semibold mt-12'>Reviews</h2>
           </div>
           {
             user && user.uid?
-            <form >
+            <form onSubmit={handleReviews}>
             <h2 className='my-6'>Leave your own review</h2>
-            <input type="text" placeholder="Your Name" className="input input-bordered input-info w-full max-w-xs mb-6" /> <br />
-            <input type="email" placeholder="Your email" className="input input-bordered input-info w-full max-w-xs mb-6" defaultValue={user?.email}/> <br />
-            <input type="text" alt='' placeholder="Your image URL" className="input input-bordered input-info w-full max-w-xs mb-6" /> <br />
-            <textarea className="textarea textarea-accent px-20 mb-4" placeholder="Your review"></textarea> <br />
+            <input type="text" placeholder="Your Name" name='name' className="input input-bordered input-info w-full max-w-xs mb-6" required /> <br />
+            <input type="email" placeholder="Your email" name='email' className="input input-bordered input-info w-full max-w-xs mb-6" required defaultValue={user?.email} /> <br />
+            <input type="text" alt='' placeholder="Your image URL" name='image' className="input input-bordered input-info w-full max-w-xs mb-6" /> <br />
+            <textarea name='review' className="textarea textarea-accent px-20 mb-4" placeholder="Your review" required></textarea> <br />
             <button className='btn bg-cyan-800 px-32 mb-12'>Submit</button>
           </form> 
              :
