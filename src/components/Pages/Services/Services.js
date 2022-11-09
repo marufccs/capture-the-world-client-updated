@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../UserContext/UserContext';
 import Service from './Service';
 
 const Services = () => {
     const services = useLoaderData();
+
+    const {loading} = useContext(AuthContext);
+    
+    if(loading){
+        return <button className="btn loading">loading</button>
+      }
+    
     return (
         <div>
             <Helmet>

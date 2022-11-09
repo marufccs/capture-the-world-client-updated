@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../UserContext/UserContext';
 import { FaGoogle } from "react-icons/fa";
@@ -7,9 +7,19 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 const SignUp = () => {
 
-const {signUp, signUpWithGoogle} = useContext(AuthContext);
+const {signUp, signUpWithGoogle, loading} = useContext(AuthContext);
+
+const location = useLocation();
+const navigate = useNavigate();
+
+const from = location.state?.from?.pathname || '/';
 
 const [error, setError] = useState('');
+
+if(loading){
+  return <button className="btn loading my-28">loading</button>
+}
+
 //sign up with email and password
 const handleSubmit = event => {
     event.preventDefault();
@@ -28,6 +38,7 @@ const handleSubmit = event => {
           )
         form.reset();
         setError(' ');
+        navigate(from, {replace: true});
       })
       .catch((error) => {
         const errorMessage = error.message;

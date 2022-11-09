@@ -6,14 +6,18 @@ import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../../UserContext/UserContext';
 
 const SignIn = () => {
-    const {signIn, signUpWithGoogle} = useContext(AuthContext);
-
+    const {signIn, signUpWithGoogle, loading} = useContext(AuthContext);
+    
     const location = useLocation();
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
     const [error, setError] = useState('');
+
+    if(loading){
+      return <button className="btn loading">loading</button>
+    }
 
     const handleLogIn = event => {
         event.preventDefault();
