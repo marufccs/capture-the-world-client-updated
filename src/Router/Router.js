@@ -1,12 +1,15 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import AddServices from '../components/Pages/AddServices/AddServices';
 import Blog from '../components/Pages/Blog/Blog';
 import Home from '../components/Pages/Home/Home';
+import MyReviews from '../components/Pages/MyReviews/MyReviews';
 import ServiceDetails from '../components/Pages/Services/ServiceDetails';
 import Services from '../components/Pages/Services/Services';
 import SignIn from '../components/Pages/SignIn/SignIn';
 import SignUp from '../components/Pages/SignUp/SignUp';
 import Main from '../Main/Main';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -41,6 +44,19 @@ const Router = () => {
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/myreviews',
+                element: <PrivateRoute>
+                <MyReviews></MyReviews>
+                </PrivateRoute>
+
+            },
+            {
+                path: '/addservices',
+                element: <PrivateRoute>
+                <AddServices></AddServices>
+                </PrivateRoute>
             },
         ]
     }
