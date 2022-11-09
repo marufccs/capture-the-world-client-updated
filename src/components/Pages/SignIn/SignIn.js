@@ -1,12 +1,17 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../../UserContext/UserContext';
 
 const SignIn = () => {
     const {signIn, signUpWithGoogle} = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const [error, setError] = useState('');
 
@@ -27,6 +32,7 @@ const SignIn = () => {
               )
             form.reset();
             setError(' ');
+            navigate(from, {replace: true});
           })
           .catch((error) => {
             const errorMessage = error.message;
