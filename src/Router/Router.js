@@ -2,6 +2,8 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AddServices from '../components/Pages/AddServices/AddServices';
 import Blog from '../components/Pages/Blog/Blog';
+import ContactUs from '../components/Pages/ContactUs/ContactUs';
+import ErrorPage from '../components/Pages/ErrorPage/ErrorPage';
 import Home from '../components/Pages/Home/Home';
 import MyReviews from '../components/Pages/MyReviews/MyReviews';
 import ServiceDetails from '../components/Pages/Services/ServiceDetails';
@@ -16,6 +18,7 @@ const Router = () => {
     {
         path: '/',
         element: <Main/>, 
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -44,6 +47,10 @@ const Router = () => {
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/contactus',
+                element:<ContactUs></ContactUs>
             },
             {
                 path: '/myreviews/:email',

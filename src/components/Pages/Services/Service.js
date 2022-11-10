@@ -4,7 +4,6 @@ import { HiX } from "react-icons/hi";
 
 const Service = ({service}) => {
     const {_id, name, img, price, description} = service;
-    // console.log(service);
     const [model, setModel] = useState(false);
     const [tempImgSrc, setTempImgSrc] = useState('');
     const handleImage = img => {
@@ -25,7 +24,7 @@ const Service = ({service}) => {
     <p className='font-semibold text-left'>{description.slice(0, 100)+'...'}<Link className='text-cyan-800' to={`/services/${_id}`}><span>Read More</span></Link></p>
     <div className="card-actions justify-between">
         <h4 className='text-3xl font-semibold'>Price: €{price}</h4>
-      <button className="btn bg-cyan-800">Get It Now</button>
+      <button className="btn bg-cyan-800"><Link to='/contactus'>Get It Now</Link></button>
     </div>
   </div>
 </div>
