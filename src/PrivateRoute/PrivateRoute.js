@@ -3,8 +3,11 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../UserContext/UserContext';
 
 const PrivateRoute = ({children}) => {
-    const {user} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext)
     const location = useLocation();
+    if(loading){
+        return <button className="btn loading">loading</button>
+      }
     return (
         <div>
             {

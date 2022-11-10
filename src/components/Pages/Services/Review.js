@@ -8,7 +8,7 @@ const Review = ({rev}) => {
     if(loading){
         return <button className="btn loading">loading</button>
     }
-
+    
     const {img, name, email, review} = rev;
     return (
     <div className="card w-96 bg-base-100 shadow-xl mx-auto my-12">
@@ -27,9 +27,6 @@ const Review = ({rev}) => {
         {email}
     </h3>
     <p>{review}</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-ghost text-amber-800">Delete Now</button>
-    </div>
   </div>
 </div>
     );

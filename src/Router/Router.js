@@ -46,7 +46,8 @@ const Router = () => {
                 element: <SignUp></SignUp>
             },
             {
-                path: '/myreviews',
+                path: '/myreviews/:email',
+                loader: ({params}) => fetch(`http://localhost:5000/reviews?email=${params.email}`),
                 element: <PrivateRoute>
                 <MyReviews></MyReviews>
                 </PrivateRoute>

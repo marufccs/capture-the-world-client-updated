@@ -53,7 +53,7 @@ const Header = () => {
       {
         user && user.uid?
         <div className='flex'>
-         <li><Link to='/myreviews'>My Reviews</Link></li>
+         <li><Link to={`myreviews/${user.email}`}>My Reviews</Link></li>
          <li><Link to='/addservices'>Add Services</Link></li>
          <li onClick={handleLogOut}><Link>Sign Out</Link></li>
           </div>:

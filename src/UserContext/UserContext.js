@@ -11,7 +11,6 @@ const UserContext = ({children}) => {
 
     // Sign Up
     const signUp = (email, password) => {
-        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
@@ -24,7 +23,6 @@ const UserContext = ({children}) => {
 
     //sign in 
     const signIn = (email, password) => {
-        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
