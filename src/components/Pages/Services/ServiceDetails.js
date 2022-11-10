@@ -9,13 +9,15 @@ const ServiceDetails = () => {
 
 
   const data =  useLoaderData();
-  const {_id, name, img, description, price} = data;
-  const serviceId = _id;
-
+  
   const [reviews, setReviews] = useState([])
 
+  // const {_id, name, img, description, price} = data;
+  const serviceId = data._id;
+
+
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceId=${serviceId}`)
+    fetch(`https://capture-the-world-server.vercel.app/reviews?serviceId=${serviceId}`)
     .then(res => res.json())
     .then(data => setReviews(data))
   },[serviceId])
@@ -37,7 +39,7 @@ const ServiceDetails = () => {
       const review = form.review.value;
       const wholeReview = {name, email, img, review, serviceId};
       console.log(wholeReview);
-      fetch('http://localhost:5000/reviews', {
+      fetch('https://capture-the-world-server.vercel.app/reviews', {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'
@@ -64,12 +66,12 @@ const ServiceDetails = () => {
     return (
         <div>
             <div className="card bg-base-100 shadow-xl">
-            <figure><img src={img} alt="Album"/></figure>
+            <figure><img src={data.img} alt="Album"/></figure>
             <div className="card-body">
-              <h2 className="text-center text-6xl">{name}</h2>
-              <p>{description}</p>
+              <h2 className="text-center text-6xl">{data.name}</h2>
+              <p>{data.description}</p>
               <div>
-                <h4 className='text-3xl'>Price: €{price}</h4>
+                <h4 className='text-3xl'>Price: €{data.price}</h4>
               </div>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">Listen</button>

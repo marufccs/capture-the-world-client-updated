@@ -14,7 +14,7 @@ const AddServices = () => {
         const service = {
             title, img, price, description
         }
-        fetch('http://localhost:5000/allServices', {
+        fetch('https://capture-the-world-server.vercel.app/allServices', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

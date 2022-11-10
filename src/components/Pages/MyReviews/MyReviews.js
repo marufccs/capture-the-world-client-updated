@@ -34,7 +34,7 @@ const MyReviews = () => {
                 'Your file has been successfully deleted.',
                 'success'
               )
-              fetch(`http://localhost:5000/reviews/${id}`,{
+              fetch(`https://capture-the-world-server.vercel.app/reviews/${id}`,{
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -56,7 +56,6 @@ const MyReviews = () => {
             }
           })       
     }
-    console.log(reviews);
 
     const {loading} = useContext(AuthContext);
     if(loading){

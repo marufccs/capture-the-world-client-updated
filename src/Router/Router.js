@@ -22,18 +22,18 @@ const Router = () => {
         children: [
             {
                 path: '/',
-                loader: () => fetch ('http://localhost:5000/services'),
+                loader: () => fetch ('https://capture-the-world-server.vercel.app/services'),
                 element: <Home/>
             },
             {
                 path: '/services',
-                loader: () => fetch('http://localhost:5000/allServices'),
+                loader: () => fetch('https://capture-the-world-server.vercel.app/allServices'),
                 element: <Services/>
             },
             {
                 path: '/services/:id',
                 loader: ({params}) =>
-                    fetch(`http://localhost:5000/allServices/${params.id}`),
+                    fetch(`https://capture-the-world-server.vercel.app/allServices/${params.id}`),
                 element: <ServiceDetails/>
             },
             {
@@ -54,11 +54,10 @@ const Router = () => {
             },
             {
                 path: '/myreviews/:email',
-                loader: ({params}) => fetch(`http://localhost:5000/reviews?email=${params.email}`),
+                loader: ({params}) => fetch(`https://capture-the-world-server.vercel.app/reviews?email=${params.email}`),
                 element: <PrivateRoute>
                 <MyReviews></MyReviews>
                 </PrivateRoute>
-
             },
             {
                 path: '/addservices',
