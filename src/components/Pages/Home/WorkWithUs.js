@@ -2,7 +2,7 @@ import React from 'react';
 
 const WorkWithUs = () => {
     return (
-        <div className="hero min-h-screen" style={{ backgroundImage: `url("https://www.all-about-photo.com/images/articles/ART-486-5.jpg")` }}>
+        <div className="hero min-h-screen mb-6" style={{ backgroundImage: `url("https://www.all-about-photo.com/images/articles/ART-486-5.jpg")` }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">

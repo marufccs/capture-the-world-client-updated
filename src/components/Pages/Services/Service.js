@@ -18,7 +18,7 @@ const Service = ({service}) => {
       <HiX onClick={() => setModel(false)}></HiX>
       </div>
       <div onClick={()=> handleImage(img)}>
-  <figure><img className='cursor-pointer rounded'  src={img} alt="" /></figure> </div>
+  <figure><img className='cursor-pointer rounded h-72'  src={img} alt="" /></figure> </div>
   <div className="card-body">
     <h2 className="card-title">{name}</h2>
     <p className='font-semibold text-left'>{description.slice(0, 100)+'...'}<Link className='text-cyan-800' to={`/services/${_id}`}><span>Read More</span></Link></p>
