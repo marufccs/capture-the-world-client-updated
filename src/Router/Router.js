@@ -51,7 +51,7 @@ const Router = () => {
             {
                 path: '/contactus',
                 element:<ContactUs></ContactUs>
-            },
+            }, 
             {
                 path: '/myreviews/:email',
                 loader: ({params}) => fetch(`https://capture-the-world-server.vercel.app/reviews?email=${params.email}`),
