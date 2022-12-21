@@ -12,7 +12,7 @@ const Service = ({service}) => {
     }
     return (
         <div>
-             <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto mb-8">
+             <div className="card card-compact w-84 bg-base-100 shadow-xl mx-auto mb-8">
              <div className={model? "model open":"model"}>
              <img src={tempImgSrc} alt=""></img>
       <HiX onClick={() => setModel(false)}></HiX>

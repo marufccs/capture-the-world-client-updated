@@ -11,7 +11,7 @@ const Review = ({rev}) => {
     
     const {img, name, email, review} = rev;
     return (
-    <div className="card w-96 bg-base-100 shadow-xl mx-auto my-12">
+    <div className="card w-80 bg-base-100 shadow-xl mx-auto my-12">
   <div className="card-body">
     <h2 className="">
     <div className='flex justify-center'>

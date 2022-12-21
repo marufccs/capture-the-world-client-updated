@@ -8,7 +8,7 @@ const ServicesHome = ({services}) => {
             <div className='mb-6 text-5xl font-medium'>
                 <h1>Services</h1>
             </div>
-        <div className='grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 '>
+        <div className='grid gap-6 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 '>
             {
                 services.map(service => <ServiceAll key={service._id} service={service}></ServiceAll>)
             }

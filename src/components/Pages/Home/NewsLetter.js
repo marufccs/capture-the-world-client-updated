@@ -16,7 +16,7 @@ const NewsLetter = () => {
     }
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen bg-base-200 mb-6 rounded-lg">
   <div className="hero-content text-center">
     <div className="max-w-md">
       <h1 className="text-5xl font-bold">Subscribe to Our NewsLetter</h1>

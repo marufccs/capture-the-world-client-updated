@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
+import './Header.css'
 
 const Header = () => {
 
@@ -37,7 +38,7 @@ const Header = () => {
       </li>
       </ul>
     </div>
-    <Link to='/' className="btn btn-ghost normal-case text-cyan-800 text-xl">Capture The World</Link>
+    <Link to='/' className="btn header-title btn-ghost normal-case text-cyan-800 text-lg ">Capture The World</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
@@ -61,8 +62,8 @@ const Header = () => {
       }
     </ul>
   </div>
-  <div className="navbar-end">
-    <Link className='btn bg-cyan-800' to='/contactus'>Contact Us</Link>
+  <div className="navbar-end  hidden lg:block">
+    <Link className='btn bg-cyan-800 contact-us' to='/contactus'>Contact Us</Link>
   </div>
 </div>
     );

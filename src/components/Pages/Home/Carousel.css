@@ -1,11 +1,15 @@
-@media screen and (max-width: 900px)  {
+@media screen and (max-width: 799px)  {
     .slider-texts{
         font-size: 32px;
         color: white;
         position: relative;
-        bottom: 200px;
-        padding-left: 80px;
+        bottom: 100px;
+        padding-left: -90px;
+        margin-left: 30px;
     }
+    /* .slider-img{
+        margin-left: 20px;
+    } */
 }
 @media screen and (min-width: 901px){
     .slider-texts{
@@ -14,4 +18,5 @@
         bottom: 350px;
         padding-left: 100px;
     }
+   
 }

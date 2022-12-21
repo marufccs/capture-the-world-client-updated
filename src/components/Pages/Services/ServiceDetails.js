@@ -4,6 +4,7 @@ import { Link, Navigate, useLoaderData, useLocation, useNavigate } from 'react-r
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../UserContext/UserContext';
 import Review from './Review';
+import './ServiceDetails.css'
 
 const ServiceDetails = () => {
 
@@ -65,26 +66,26 @@ const ServiceDetails = () => {
 
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl">
+            <div className="mt-6 card bg-base-100 shadow-xl lg:w-11/12 lg:relative lg:left-16">
             <figure><img src={data.img} alt="Album"/></figure>
             <div className="card-body">
-              <h2 className="text-center text-6xl">{data.name}</h2>
-              <p>{data.description}</p>
+              <h2 className="text-center text-4xl lg:text-6xl">{data.name}</h2>
+              <p className='text-justify'>{data.description}</p>
               <div>
                 <h4 className='text-3xl'>Price: €{data.price}</h4>
               </div>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Listen</button>
+                <button className='btn bg-cyan-800 get-it-now-button'><Link to='/contactus'>Get It Now</Link></button>
               </div>
             </div>
           </div>
-          <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
+          <div>
+            <h2 className='text-5xl font-semibold mt-12'>Reviews</h2>
+          </div>
+          <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mx-8'>
            {
             reviews.map(rev => <Review key={rev._id} rev={rev}></Review>)
            }
-          </div>
-          <div>
-            <h2 className='text-5xl font-semibold mt-12'>Reviews</h2>
           </div>
           {
             user && user.uid?
